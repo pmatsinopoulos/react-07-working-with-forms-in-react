@@ -9,11 +9,13 @@ class Content extends React.Component {
       },
       favouriteColor: {
       },
-      selectExample: null
+      selectExample: "",
+      accountNumber: ""
     }
     this.handleProgrammingLanguageChange = this.handleProgrammingLanguageChange.bind(this)
     this.handleColorChange = this.handleColorChange.bind(this)
     this.handleSelectExampleChange = this.handleSelectExampleChange.bind(this)
+    this.handleAccountNumberChange = this.handleAccountNumberChange.bind(this)
   }
 
   handleProgrammingLanguageChange(event) {
@@ -30,6 +32,12 @@ class Content extends React.Component {
 
   handleSelectExampleChange(event) {
     this.setState({selectExample: event.target.value})
+  }
+
+  handleAccountNumberChange(event) {
+    let value = event.target.value
+    value = value.replace(/[^0-9]/ig, '')
+    this.setState({accountNumber: value})
   }
 
   render() {
@@ -83,6 +91,11 @@ class Content extends React.Component {
             <option value="python">Python</option>
             <option value="javascript">JavaScript</option>
           </select>
+
+          <h2>Account Number</h2>
+          <input type="text" name="accountNumber" value={this.state.accountNumber}
+                 onChange={this.handleAccountNumberChange}
+                 placeholder="1234567890" />
         </form>
       </div>
     )
