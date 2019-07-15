@@ -2,21 +2,41 @@ class Content extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: 'Mr.2'
+      programmingLanguage: {
+        angular: false,
+        react: false,
+        polymer: false
+      }
     }
-    this.handleTitleChange = this.handleTitleChange.bind(this)
+    this.handleProgrammingLanguageChange = this.handleProgrammingLanguageChange.bind(this)
   }
 
-  handleTitleChange(e) {
-    console.debug(this, 'handleTitleChange', 'e', e)
-    this.setState({title: e.target.value})
+  handleProgrammingLanguageChange(event) {
+    let programmingLanguage = {}
+    programmingLanguage[event.target.value] = event.target.checked
+    this.setState({programmingLanguage: programmingLanguage})
   }
 
   render() {
     return (
       <div>
-        <input type="text" name="title" value={this.state.title}
-         onChange={this.handleTitleChange}/>
+        <form>
+          Angular <input type="radio" name="programming-language"
+                 value='angular'
+                 checked={this.state.programmingLanguage.angular}
+                 onChange={this.handleProgrammingLanguageChange}/>
+          <br/>
+          React <input type="radio" name="programming-language"
+                 value='react'
+                 checked={this.state.programmingLanguage.react}
+                 onChange={this.handleProgrammingLanguageChange}/>
+          <br/>
+          Polymer <input type="radio" name="programming-language"
+                 value='polymer'
+                 checked={this.state.programmingLanguage.polymer}
+                 onChange={this.handleProgrammingLanguageChange}/>
+
+        </form>
       </div>
     )
   }
