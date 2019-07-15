@@ -6,9 +6,12 @@ class Content extends React.Component {
         angular: false,
         react: false,
         polymer: false
+      },
+      favouriteColor: {
       }
     }
     this.handleProgrammingLanguageChange = this.handleProgrammingLanguageChange.bind(this)
+    this.handleColorChange = this.handleColorChange.bind(this)
   }
 
   handleProgrammingLanguageChange(event) {
@@ -17,9 +20,16 @@ class Content extends React.Component {
     this.setState({programmingLanguage: programmingLanguage})
   }
 
+  handleColorChange(event) {
+    let color = Object.assign(this.state.favouriteColor)
+    color[event.target.value] = event.target.checked
+    this.setState({favouriteColor: color})
+  }
+
   render() {
     return (
       <div>
+        <h1>Form with Radio Buttons</h1>
         <form>
           Angular <input type="radio" name="programming-language"
                  value='angular'
@@ -36,6 +46,29 @@ class Content extends React.Component {
                  checked={this.state.programmingLanguage.polymer}
                  onChange={this.handleProgrammingLanguageChange}/>
 
+        </form>
+        <h1>Form with Checkboxes</h1>
+        <form>
+          Red <input type="checkbox" name="favouriteColor"
+                 value="red"
+                 checked={this.state.favouriteColor['red']}
+                 onChange={this.handleColorChange} />
+          <br/>
+          Yellow <input type="checkbox" name="favouriteColor"
+                 value="yellow"
+                 checked={this.state.favouriteColor['yellow']}
+                 onChange={this.handleColorChange} />
+          <br/>
+          Green <input type="checkbox" name="favouriteColor"
+                 value="green"
+                 checked={this.state.favouriteColor['green']}
+                 onChange={this.handleColorChange} />
+          <br/>
+          Blue <input type="checkbox" name="favouriteColor"
+                 value="blue"
+                 checked={this.state.favouriteColor['blue']}
+                 onChange={this.handleColorChange} />
+          <br/>
         </form>
       </div>
     )
