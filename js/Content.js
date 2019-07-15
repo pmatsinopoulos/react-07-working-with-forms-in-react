@@ -7,10 +7,12 @@ class Content extends React.Component {
         react: false,
         polymer: false
       },
-      favouriteColor: {}
+      favouriteColor: {},
+      selectExample: null
     };
     this.handleProgrammingLanguageChange = this.handleProgrammingLanguageChange.bind(this);
     this.handleColorChange = this.handleColorChange.bind(this);
+    this.handleSelectExampleChange = this.handleSelectExampleChange.bind(this);
   }
 
   handleProgrammingLanguageChange(event) {
@@ -25,6 +27,10 @@ class Content extends React.Component {
     this.setState({ favouriteColor: color });
   }
 
+  handleSelectExampleChange(event) {
+    this.setState({ selectExample: event.target.value });
+  }
+
   render() {
     return React.createElement(
       "div",
@@ -32,11 +38,16 @@ class Content extends React.Component {
       React.createElement(
         "h1",
         null,
-        "Form with Radio Buttons"
+        "Form with various elements"
       ),
       React.createElement(
         "form",
         null,
+        React.createElement(
+          "h2",
+          null,
+          "Favourite Programming Language"
+        ),
         "Angular ",
         React.createElement("input", { type: "radio", name: "programming-language",
           value: "angular",
@@ -53,16 +64,12 @@ class Content extends React.Component {
         React.createElement("input", { type: "radio", name: "programming-language",
           value: "polymer",
           checked: this.state.programmingLanguage.polymer,
-          onChange: this.handleProgrammingLanguageChange })
-      ),
-      React.createElement(
-        "h1",
-        null,
-        "Form with Checkboxes"
-      ),
-      React.createElement(
-        "form",
-        null,
+          onChange: this.handleProgrammingLanguageChange }),
+        React.createElement(
+          "h2",
+          null,
+          "Favourite Color"
+        ),
         "Red ",
         React.createElement("input", { type: "checkbox", name: "favouriteColor",
           value: "red",
@@ -86,7 +93,36 @@ class Content extends React.Component {
           value: "blue",
           checked: this.state.favouriteColor['blue'],
           onChange: this.handleColorChange }),
-        React.createElement("br", null)
+        React.createElement("br", null),
+        React.createElement(
+          "h2",
+          null,
+          "Select Example"
+        ),
+        React.createElement(
+          "select",
+          { value: this.state.selectExample, onChange: this.handleSelectExampleChange },
+          React.createElement(
+            "option",
+            { value: "" },
+            "Select one of the following"
+          ),
+          React.createElement(
+            "option",
+            { value: "java" },
+            "Java"
+          ),
+          React.createElement(
+            "option",
+            { value: "python" },
+            "Python"
+          ),
+          React.createElement(
+            "option",
+            { value: "javascript" },
+            "JavaScript"
+          )
+        )
       )
     );
   }

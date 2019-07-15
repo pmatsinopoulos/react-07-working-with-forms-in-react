@@ -8,10 +8,12 @@ class Content extends React.Component {
         polymer: false
       },
       favouriteColor: {
-      }
+      },
+      selectExample: null
     }
     this.handleProgrammingLanguageChange = this.handleProgrammingLanguageChange.bind(this)
     this.handleColorChange = this.handleColorChange.bind(this)
+    this.handleSelectExampleChange = this.handleSelectExampleChange.bind(this)
   }
 
   handleProgrammingLanguageChange(event) {
@@ -26,11 +28,16 @@ class Content extends React.Component {
     this.setState({favouriteColor: color})
   }
 
+  handleSelectExampleChange(event) {
+    this.setState({selectExample: event.target.value})
+  }
+
   render() {
     return (
       <div>
-        <h1>Form with Radio Buttons</h1>
+        <h1>Form with various elements</h1>
         <form>
+          <h2>Favourite Programming Language</h2>
           Angular <input type="radio" name="programming-language"
                  value='angular'
                  checked={this.state.programmingLanguage.angular}
@@ -46,9 +53,8 @@ class Content extends React.Component {
                  checked={this.state.programmingLanguage.polymer}
                  onChange={this.handleProgrammingLanguageChange}/>
 
-        </form>
-        <h1>Form with Checkboxes</h1>
-        <form>
+
+          <h2>Favourite Color</h2>
           Red <input type="checkbox" name="favouriteColor"
                  value="red"
                  checked={this.state.favouriteColor['red']}
@@ -69,6 +75,14 @@ class Content extends React.Component {
                  checked={this.state.favouriteColor['blue']}
                  onChange={this.handleColorChange} />
           <br/>
+
+          <h2>Select Example</h2>
+          <select value={this.state.selectExample} onChange={this.handleSelectExampleChange}>
+            <option value="">Select one of the following</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+          </select>
         </form>
       </div>
     )
