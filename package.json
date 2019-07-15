@@ -1,0 +1,31 @@
+{
+  "name": "07-working-with-forms-in-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel jsx -d js -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pmatsinopoulos/react-07-working-with-forms-in-react.git"
+  },
+  "author": "Panagiotis Matsinopoulos - Panos M.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pmatsinopoulos/react-07-working-with-forms-in-react/issues"
+  },
+  "homepage": "https://github.com/pmatsinopoulos/react-07-working-with-forms-in-react#readme",
+  "devDependencies": {
+    "node-static": "^0.7.11",
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "braces": ">=2.3.1"
+  },
+  "babel": {
+    "presets": [
+      "react"
+    ]
+  }
+}
